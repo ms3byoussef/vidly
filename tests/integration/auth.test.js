@@ -8,7 +8,11 @@ describe('auth middleware',()=>{
     //Define the happy path , and then in each 
   
         beforeEach(() =>{server= require('../../index');})
-        afterEach(() =>{ server.close();});
+        afterEach(async() =>{ 
+            await  server.close();
+            await Genre.deleteMany({});
+
+        });
     
     
      
@@ -22,9 +26,8 @@ describe('auth middleware',()=>{
     .set('x-auth-token',token)
     .send({name: "genre1"});}
 
-    beforeEach(async ()=>{
+    beforeEach( ()=>{
         token=new User().generateAuthToken();      
-             await Genre.deleteMany({});
 
 
 });

@@ -30,14 +30,14 @@ movie: {
             required:true,
             minLength:5,
             maxLength:50,
-        },
+         },
         genreId: {
             type:String,
-            required:true,
+            // required:true,
         },
         numberInStock: {
             type:Number,
-            required:true,
+            // required:true,
             min:0,
         },
         dailyRentalRate: {

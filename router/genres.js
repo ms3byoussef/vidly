@@ -24,12 +24,12 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', [auth,admin] ,async (req, res) => {
     const { error } = validate(req.body);
     if(error){
         res.status(400).send(error.details[0].message);
     }else{
-   const genre=    await Genre.findByIdAndUpdate(req.params.id, {name:req.body.name ,new: true });
+   const genre=  await Genre.findByIdAndUpdate(req.params.id, {name:req.body.name ,new: true });
    res.send(genre);
 
     }
